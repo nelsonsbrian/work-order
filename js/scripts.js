@@ -1,17 +1,51 @@
+function removeDuplicateUsingFilter(arr){
+  let noDuplicates = arr.filter(function(elem, index, self) {
+    return index == self.indexOf(elem);
+  });
+  return noDuplicates
+}
+
+
 $(document).ready(function() {
 
 
-  $("button#deck").click(function() {
+  $("#workOrder").submit(function(event) {
+    event.preventDefault();
 
-    var cardNumber = ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"];
-    var cardSuit = ["Hearts", "Diamonds", "Clubs", "Spades"];
+      var inputTextArray = [];
+      var inputTemp = $("input#inputText").val();
+      inputTextArray = inputTemp.split(" ");
 
-    cardSuit.forEach(function(suit) {
-      cardNumber.forEach(function(number) {
-        var output = (number + " of " + suit + "<br>");
-        $(".output").append(output);
+      var noDuplicates = removeDuplicateUsingFilter(inputTextArray);
+
+
+
+      var original;
+      noDuplicates.forEach(function(uniqueWord) {
+        var count = 0;
+        inputTextArray.forEach(function(duplicate) {
+          if (uniqueWord === duplicate) {
+            count++;
+          }
+
+
+        });
+        $(".output").append(uniqueWord + " count is " + count + "<br>");
+
       });
-    });
+
 
   });
 });
+
+
+
+
+
+// var noDuplicates = inputTextArray.map(function(word) {
+//   if (word === "this") {
+//     return word;
+//   }
+// });
+//
+// alert(noDuplicates);

@@ -30,7 +30,9 @@ $(document).ready(function() {
 
 
         });
-        $(".output").append(uniqueWord + " count is " + count + "<br>");
+
+
+        $(".output ul").append("<li>Word: " + uniqueWord + " Count: " + count + "</li>")
 
       });
 
